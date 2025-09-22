@@ -43,6 +43,12 @@ button {
   transition: border-color 0.25s;
 }
 
+img{
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
 button:hover {
   border-color: #646cff;
 }
