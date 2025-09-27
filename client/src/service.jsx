@@ -3,6 +3,7 @@ import './service.css'
 export default function Service() {
   return (
     <>
+    <div className="content-box">
     <h2>Services</h2>
       <h3> I specialize in building modern, scalable, and user-friendly applications.
         Here are some of the services I offer:</h3>
@@ -14,14 +15,13 @@ export default function Service() {
 
         <h3>Web Development</h3>
         <p> I can create responsive and visually appealing websites using HTML, CSS, and JavaScript.
-        I have experience with popular frameworks like React, Angular, and Node.js.</p>
+        I have experience with popular frameworks like React, Express, and Node.js.</p>
 
+        <h3>Database Management</h3>
+        <p> I can design and manage databases using SQL and NoSQL technologies.
+        I have experience with Oracle's SQL Developer, and MongoDB.</p>
 
-
-
-
-
-
+</div>
     </>
   );
 }

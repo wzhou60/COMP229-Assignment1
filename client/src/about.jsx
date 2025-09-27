@@ -6,12 +6,11 @@
  a short paragraph about who you are. Keep this clean and simple as it may be viewed by perspective employers.
 Your About Me page should include a link to a PDF version of your Resume. */
 
-import './about.css'
+import "./about.css";
 
 export default function About() {
   return (
     <>
-      <h2>About Me</h2>
       <Info />
     </>
   );
@@ -20,20 +19,23 @@ export default function About() {
 function Info() {
   return (
     <>
-      <img src="" alt="" />
-      <h3>Wen Feng (Jackie) Zhou</h3>
-      <p>
-        
-        I am a student at Centennial College. I am currently in the 3rd semester of the Software
-        Engineering Technology program. I am interested in software development and this website is
-        to show my portfolio and display what skills I have .
-      </p>
-      <img src="src/assets/jackie.jpg" alt="Jackie" width={200} height={250} />
+      <div className="content-box">
+        <h2>About Me</h2>
+        <img src="src/assets/jackie.png" alt="Picture of me" width={216} height={291} />
+        <h3>Wen Feng (Jackie) Zhou</h3>
+        <p>
+          I am a student at Centennial College. I am currently in the 3rd semester of the Software
+          Engineering Technology program. I am interested in software development and this website
+          is to show my portfolio and display what skills I have.
+        </p>
 
-      <p> Here is the link to my resume: </p>
-      <a href="src/assets/Resume.pdf" download>
-        Download Resume
-      </a>
+        <div className="resume">
+          <p> Here is the link to my resume: </p>
+          <a href="src/assets/Resume.pdf" download>
+            Download Resume
+          </a>
+        </div>
+      </div>
     </>
   );
 }

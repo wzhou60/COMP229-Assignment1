@@ -1,0 +1,75 @@
+/* layout.css */
+
+body {
+  margin: 0;
+  background: rgb(233, 247, 227);
+  color: #1f2937;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+
+/* Container for the layout header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Logo and title side by side */
+header .brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+header img {
+  display: block;
+  margin: auto;
+  height: 48px;
+  width: auto;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #111827;
+}
+
+/* Navigation styling */
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 500;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #2563eb;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: #2563eb;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
