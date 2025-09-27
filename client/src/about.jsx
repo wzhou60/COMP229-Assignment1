@@ -21,7 +21,7 @@ function Info() {
      <h2 className="about-header">About Me</h2>
       <div className="content-boxAbout">
        
-        <img src="src/assets/jackie.png" alt="Picture of me"/>
+        <img src="/assets/jackie.png" alt="Picture of me"/>
         <h3>Wen Feng (Jackie) Zhou</h3>
         <p>
           I am a student at Centennial College. I am currently in the 3rd semester of the Software
@@ -31,7 +31,7 @@ function Info() {
 
         <div className="resume">
           <p> Here is the link to my resume: </p>
-          <button > <a href="src/assets/Resume.pdf" download className="btn-download">
+          <button > <a href="/assets/Resume.pdf" download className="btn-download">
             Download Resume
           </a></button>
         </div>

@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useNavigate } from "react-router-dom";
 import "./contact.css";
 export default function Contact() {
   return (
@@ -31,10 +29,11 @@ function ContactDetails() {
 }
 
 function ContactForms() {
-  function submitForm(data) {
-    console.log("Form submitted:", data);
-  }
-
+  /**
+   * A callback function that is called when the contact form is submitted.
+   * It takes one argument, an object containing the form data.
+   * The function logs the form data to the console.
+   */
   const onSubmit = (data) => {
     console.log(data);
   };

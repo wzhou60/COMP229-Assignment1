@@ -19,7 +19,7 @@ function Projects() {
             This is a solo project. Where I am developing a personal portfolio website using React and Vite to showcase my projects and
             skills.
           </p>
-          <img src="src/assets/project1.png" alt="" width={700} height={450} />
+          <img src="/assets/project1.png" alt="" width={700} height={450} />
         </div>
 
         <div className="project">
@@ -30,7 +30,7 @@ function Projects() {
             to navigate.
           </p>
 
-          <img src="src/assets/project2.png" alt="" width={700} height={450} />
+          <img src="/assets/project2.png" alt="" width={700} height={450} />
         </div>
 
         <div className="project">
@@ -40,7 +40,7 @@ function Projects() {
             The mod alters enemy AI to be more aggressive. I just fixed a few errors in the mod so that it works in a newer minecraft version.
 
           </p>
-          <img src="src/assets/project3.png" alt="" width={700} height={450} />
+          <img src="/assets/project3.png" alt="" width={700} height={450} />
         </div>
       </div>
     </>

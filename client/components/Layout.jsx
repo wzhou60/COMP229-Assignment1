@@ -6,7 +6,7 @@ export default function Layout() {
     <>
       <header>
         <div className="brand">
-          <img src="src/assets/logo.png" alt="Logo" />
+          <img src="/assets/logo.png" alt="Logo" />
           <h1>My Portfolio</h1>
         </div>
         <nav>
