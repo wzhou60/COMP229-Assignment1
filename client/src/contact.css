@@ -1,0 +1,104 @@
+/* header */
+.contact-header {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  padding-top: 20px;
+  margin: auto;
+}
+
+/* Contact info panel */
+.content-boxContact {
+  background: #f0f8ff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  max-width: 70%;
+  margin: auto;
+  text-align: center;
+}
+
+.content-boxContact h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.content-boxContact p {
+  margin: 0.5rem 0;
+}
+
+.content-boxContact a {
+  color: #2563eb;
+}
+
+.content-boxContact a:hover {
+  text-decoration: underline;
+}
+
+/* Form container */
+.form {
+  background: #f0f8ff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.form h3 {
+  margin-top: -15px;
+  font-size: 1.5rem;
+}
+
+/* the field divs */
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+/* make the label a bit bolder to see better */
+.field label {
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+/* Inputs and textarea */
+.field input,
+.field textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #ffffff;
+}
+
+/* some extra visual stuff when textbox is being used/focused */
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: #004df2;
+  box-shadow: 0 0 0 3px rgba(49, 88, 175, 0.2);
+}
+
+/* submit button stuff */
+button {
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  margin: auto;
+  transition: transform 0.15s ease;
+}
+
+button:hover {
+  background: #1e40af;
+  color: #fff;
+  transform: translateY(-2px);
+}

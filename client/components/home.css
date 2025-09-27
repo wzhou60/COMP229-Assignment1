@@ -1,28 +1,55 @@
-/* Welcome container */
-p.Welcome,
-h2.Welcome {
+.welcomeMessage {
+  padding: 20px;
+  max-width: 70%;
+  margin: auto;
+}
+
+.welcomeMessage p {
   text-align: center;
-  margin: 0.5rem 0;
-  font-size: 25px;
+  margin: auto;
+  font-size: 20px;
 }
 
-h2.Welcome {
-  margin-top: 2rem;
+.welcomeMessage h3 {
+  text-align: center;
+  margin: auto;
+  font-size: 1.5rem;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
 }
 
+.missionStatement {
+  display: grid;
+  padding: 4.5rem;
+  padding-bottom: 2.5em;
+  padding-top: 1px;
+  width: 90%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  background: #f0f8ff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
 
 /* Button styling */
-button {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 6px;
-  margin-left: 45%;
-  margin-top: 10px;
+.home-aboutButton {
+  display: flex;
+  background: #2563eb;
+  font-weight: 600;
+  border-radius: 8px;
+  margin: auto;
+  margin-top: 1rem;
+  transition: transform 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px;
 }
 
-button:hover {
-  background-color: #2980b9;
+.home-aboutButton:hover {
+  /* background: #4e86b5; */
+  background: #1e40af;
+  transform: translateY(-1px);
 }

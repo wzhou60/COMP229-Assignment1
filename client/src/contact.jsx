@@ -1,126 +1,76 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import "./contact.css";
 export default function Contact() {
   return (
     <>
-      <h2>Contact Me</h2>
+      <h2 className="contact-header">Contact Me</h2>
+      <ContactDetails />
       <ContactForms />
     </>
   );
 }
 
+function ContactDetails() {
+  return (
+    <div className="content-boxContact">
+      <h3>My Contact Info</h3>
+      <p>
+        <strong>Email:</strong> <a href="mailto:jzhou39@gmail.com">jzhou39@gmail.com</a>
+      </p>
+      <p>
+        <strong>Phone:</strong> <a href="tel:+16476146663">+1 (647) 614-6663</a>
+      </p>
+      <p>
+        <strong>Location:</strong> Toronto, Ontario, Canada
+      </p>
+    </div>
+  );
+}
+
 function ContactForms() {
-  const [form, setForm] = useState({
-    firstName: "",
-    lastName: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
-
-  const navigate = useNavigate();
-
-  // Update state when inputs change
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+  function submitForm(data) {
+    console.log("Form submitted:", data);
   }
 
-  // Handle form submission
-  function handleSubmit(e) {
-    e.preventDefault();
-    // Redirect to Home with banner message
-    navigate("/", {
-      state: { banner: `Thanks, ${form.firstName}! Your message has been captured.` },
-      replace: true,
-    });
-  }
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
     <>
-      <div className="contact-panel">
-        <h3>Reach Me</h3>
-        <p>
-          <strong>Email:</strong> jzhou39@gmail.com
-        </p>
-        <p>
-          <strong>Phone:</strong> +1 (647) 614-6663
-        </p>
-        <p>
-          <strong>Location:</strong> Toronto, ON
-        </p>
-      </div>
-
-      <form className="form" onSubmit={handleSubmit} noValidate>
-        <div className="row">
-          <div className="field">
-            <label htmlFor="firstName">First Name</label>
-            <input
-              id="firstName"
-              name="firstName"
-              type="text"
-              value={form.firstName}
-              onChange={handleChange}
-              required
-              placeholder="Jane"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="lastName">Last Name</label>
-            <input
-              id="lastName"
-              name="lastName"
-              type="text"
-              value={form.lastName}
-              onChange={handleChange}
-              required
-              placeholder="Doe"
-            />
-          </div>
+      <form className="form" onSubmit={onSubmit}>
+        <h3>Send Me a Message</h3>
+        <div className="field">
+          <label>First Name</label>
+          <input type="text" required placeholder="John" />
         </div>
 
-        <div className="row">
-          <div className="field">
-            <label htmlFor="phone">Contact Number</label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              value={form.phone}
-              onChange={handleChange}
-              placeholder="+1 647 614 6663"
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="email">Email Address</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              placeholder="jane@example.com"
-            />
-          </div>
+        <div className="field">
+          <label>Last Name</label>
+          <input type="text" required placeholder="Doe" />
+        </div>
+
+        <div className="field">
+          <label>Contact Number</label>
+          <input type="tel" placeholder="+1 416 123 6789" />
+        </div>
+
+        <div className="field">
+          <label htmlFor="email">Email Address</label>
+          <input type="email" required placeholder="email@example.com" />
         </div>
 
         <div className="field">
           <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            rows="5"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="How can I help?"
-          />
+          <textarea rows="5" placeholder="What would you like to talk about?" />
         </div>
 
-        <button className="btn primary" type="submit">
-          Send Message
-        </button>
+        <Link to="/">
+          <button type="submit">Send Message</button>
+        </Link>
       </form>
     </>
   );

@@ -8,7 +8,6 @@
 
 import { Link } from "react-router-dom";
 import "./home.css";
-import { memo } from "react";
 export default function Home() {
   return <Welcome />;
 }
@@ -16,12 +15,20 @@ export default function Home() {
 function Welcome() {
   return (
     <>
-      <h2 class="Welcome">Hello, My Name is Jackie</h2>
-      <p class="Welcome">
-        I am a student at Centennial College and I am currently in the 3rd semester of the Software
-        Engineering Technology program.{" "}
-      </p>
-
+      <div className="welcomeMessage">
+        <h2>Hello, My Name is Jackie</h2>
+        <p>
+          I am a student at Centennial College and I am currently in the 3rd semester of the
+          Software Engineering Technology program.
+        </p>
+        <div className="missionStatement">
+          <h3>Mission Statement</h3>
+          <p>
+            To continuously learn and improve my skills in software development, and to contribute
+            to the tech community through innovative projects and collaboration.
+          </p>
+        </div>
+      </div>
       <Buttons />
     </>
   );
@@ -32,8 +39,7 @@ function Buttons() {
   return (
     <>
       <Link to="/about">
-        {" "}
-        <button>About Me</button>
+        <button className="home-aboutButton">About Me</button>
       </Link>
     </>
   );
