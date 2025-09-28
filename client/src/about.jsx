@@ -31,7 +31,7 @@ function Info() {
 
         <div className="resume">
           <p> Here is the link to my resume: </p>
-          <button > <a href="/assets/Resume.pdf" download className="btn-download">
+          <button > <a href="/assets/Resume.pdf" download>
             Download Resume
           </a></button>
         </div>

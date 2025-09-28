@@ -36,7 +36,7 @@
   text-decoration: underline;
 }
 
-/* Form container */
+/* Form container for the contact message and stuff */
 .form {
   background: #f0f8ff;
   border: 1px solid #e5e7eb;
@@ -67,7 +67,7 @@
   font-weight: 400;
 }
 
-/* Inputs and textarea */
+/* style for the Inputs and textarea */
 .field input,
 .field textarea {
   padding: 0.75rem 1rem;

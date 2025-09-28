@@ -40,12 +40,13 @@ header h1 {
   color: #111827;
 }
 
-/* Navigation styling */
+/* Nav bar styling */
 nav {
   display: flex;
   gap: 1.5rem;
 }
 
+/* Nav link buttons styling */
 nav a {
   text-decoration: none;
   color: #374151;

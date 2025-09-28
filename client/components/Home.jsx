@@ -6,7 +6,7 @@
 //allows the user to redirect your About Me Page and / or other pages. I recommend also
 // including some sort of Mission Statement.
 
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; //use link for the button to go to other pages
 import "./home.css";
 export default function Home() {
   return <Welcome />;
