@@ -35,7 +35,11 @@ function ContactForms() {
    * The function logs the form data to the console.
    */
   const onSubmit = (data) => {
+    data.preventDefault();
+    console.log("Form submitted");
     console.log(data);
+      window.location.href = '/'; 
+
   };
 
   return (
@@ -44,12 +48,12 @@ function ContactForms() {
         <h3>Send Me a Message</h3>
         <div className="field">
           <label>First Name</label>
-          <input type="text" required placeholder="John" />
+          <input type="text" name="firstName" id="firstName" required placeholder="John" />
         </div>
 
         <div className="field">
           <label>Last Name</label>
-          <input type="text" required placeholder="Doe" />
+          <input type="text" name="lastName" id="lastName" required placeholder="Doe" />
         </div>
 
         <div className="field">
@@ -67,9 +71,8 @@ function ContactForms() {
           <textarea rows="5" placeholder="What would you like to talk about?" />
         </div>
 
-        <Link to="/">
           <button type="submit">Send Message</button>
-        </Link>
+        
       </form>
     </>
   );
