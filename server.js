@@ -23,6 +23,7 @@ mongoose
     //useNewUrlParser: true,
     //useCreateIndex: true,
     //useUnifiedTopology: true
+    dbName: "Portfolio"
   })
   .then(() => {
     console.log("Connected to the database!");
