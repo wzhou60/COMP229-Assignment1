@@ -46,4 +46,4 @@ UserSchema.path("hashed_password").validate(function (v) {
   }
 }, null);
 
-export default mongoose.model("User", UserSchema); //export to use in other files
+export default mongoose.model("Users", UserSchema); //export to use in other files
