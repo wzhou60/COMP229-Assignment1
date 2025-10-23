@@ -1,11 +1,11 @@
-import User from "../models/user.model.js";
+import User from "../models/users.model.js";
 import extend from "lodash/extend.js";
 import errorHandler from "./error.controller.js";
 
 /* 
-    * Create a new user
+-- Create a new user
 req and res parameters (request and response objects in an Express.js route handler)
-    Inside the function, a new instance of the User model is created using the request body data (req.body). Then, the save method is called on the 
+ Inside the function, a new instance of the User model is created using the request body data (req.body). Then, the save method is called on the 
 user object to save it to the database. 
  If the save operation is successful, a JSON response with a status code of 200 and a message of "Successfully signed up!" is sent back to the client. 
  If the save operation fails, an error is caught in the catch blockand a JSON response with a status code of 400 and an error message is sent back to the client.
