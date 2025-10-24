@@ -8,4 +8,6 @@ router.param("userId", userCtrl.userByID); //middleware to find user by ID, used
 router.route("/api/users/:userId").get(userCtrl.read);  //route for reading a user by ID
 router.route("/api/users/:userId").put(userCtrl.update); //route for updating a user by ID
 router.route("/api/users/:userId").delete(userCtrl.remove); //route for deleting a user by ID
+router.route("/api/users").delete(userCtrl.removeAll); //route for deleting all users
+
 export default router;
