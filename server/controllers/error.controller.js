@@ -6,7 +6,7 @@ function handleError(req, res) {
   const errorMessage = dbErrorHandler.getErrorMessage(err);
   const statusCode = err.status || 500; // Default to 500 if no status is set
 
-  console.error(err);
+  console.log(err);
 
   // Send the error response as JSON
   res.status(statusCode).json({
