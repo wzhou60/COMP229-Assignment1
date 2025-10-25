@@ -8,6 +8,7 @@ import userRoutes from "./routes/users.routes.js";
 import projectRoutes from "./routes/projects.routes.js";
 import educationRoutes from "./routes/educations.routes.js";
 import contactRoutes from "./routes/contacts.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 app.use(express.json()); //This middleware parses incoming requests with JSON payloads and makes it avaliable in req.body
@@ -22,5 +23,13 @@ app.use(cookieParser());
 app.use(compress());
 app.use(helmet());
 app.use(cors());
+app.use((err, req, res, next) => {
+  if (err.name === "UnauthorizedError") {
+    res.status(401).json({ error: err.name + ": " + err.message });
+  } else if (err) {
+    res.status(400).json({ error: err.name + ": " + err.message });
+    console.log(err);
+  }
+});
 
 export default app;
