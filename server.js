@@ -26,7 +26,7 @@ mongoose
     dbName: "Portfolio"
   })
   .then(() => {
-    console.log("Connected to the database!");
+    console.log(`Connected to the database! Database: ${config.mongoUri}`);
   });
 mongoose.connection.on("error", () => {
   throw new Error(`unable to connect to database: ${config.mongoUri}`);

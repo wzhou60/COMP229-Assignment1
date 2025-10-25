@@ -86,6 +86,15 @@ const remove = async (req, res) => {
 };
 
 const removeAll = async (req, res) => {
+  const { confirmation } = req.body;
+  console.log(confirmation);
+  if (confirmation !== "yes") {
+    return res.status(400).json({
+      error:
+        "Confirmation not provided. To delete all contacts, send 'yes' in the request body for confirmation.",
+    });
+  }
+
   try {
     const result = await Contact.deleteMany({});
     res.status(200).json({

@@ -109,12 +109,19 @@ const remove = async (req, res) => {
 };
 
 const removeAll = async (req, res) => {
+  const { confirmation } = req.body;
+  if (confirmation !== "yes") {
+    return res.status(400).json({
+      error:
+        "Confirmation not provided. To delete all users, send 'yes' in the request body for confirmation.",
+    });
+  }
+
   try {
-     const result = await User.deleteMany({});
+    const result = await User.deleteMany({});
     res.status(200).json({
       message: `${result.deletedCount} users have been deleted successfully.`,
     });
-
   } catch (err) {
     return res.status(400).json({
       error: errorHandler.getErrorMessage(err),

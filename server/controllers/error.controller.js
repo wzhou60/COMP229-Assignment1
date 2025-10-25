@@ -1,7 +1,7 @@
 import dbErrorHandler from "../helpers/dbErrorHandler.js";
 
 function handleError(req, res) {
-  const err = req.error; // || new Error("Unknown error occurred"); 
+  const err = req.error; // || new Error("Unknown error occurred");
 
   const errorMessage = dbErrorHandler.getErrorMessage(err);
   const statusCode = err.status || 500; // Default to 500 if no status is set
@@ -14,7 +14,9 @@ function handleError(req, res) {
   });
 }
 function getErrorMessage(errMsg) {
-  console.log(errMsg);
+  const errorMessage = dbErrorHandler.getErrorMessage(errMsg);
+  //console.log("Error:", errorMessage); // Log the error for debugging
+  return errorMessage;
 }
 // Export the controller function
 export default {
