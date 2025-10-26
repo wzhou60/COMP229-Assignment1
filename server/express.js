@@ -17,6 +17,7 @@ app.use("/", userRoutes);
 app.use("/", projectRoutes);
 app.use("/", educationRoutes);
 app.use("/", contactRoutes);
+app.use("/", authRoutes);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
