@@ -18,10 +18,9 @@ export default function About() {
 function Info() {
   return (
     <>
-     <h2 className="about-header">About Me</h2>
+      <h2 className="about-header">About Me</h2>
       <div className="content-boxAbout">
-       
-        <img src="/assets/jackie.png" alt="Picture of me"/>
+        <img src="/assets/jackie.png" alt="Picture of me" />
         <h3>Wen Feng (Jackie) Zhou</h3>
         <p>
           I am a student at Centennial College. I am currently in the 3rd semester of the Software
@@ -31,9 +30,12 @@ function Info() {
 
         <div className="resume">
           <p> Here is the link to my resume: </p>
-          <button > <a href="/assets/Resume.pdf" download>
-            Download Resume
-          </a></button>
+          <button>
+            {" "}
+            <a href="/assets/Resume.pdf" target="_blank">
+              Download Resume
+            </a>
+          </button>
         </div>
       </div>
     </>
