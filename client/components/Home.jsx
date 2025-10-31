@@ -8,6 +8,7 @@
 
 import { Link } from "react-router-dom"; //use link for the button to go to other pages
 import "./home.css";
+
 export default function Home() {
   return <Welcome />;
 }
