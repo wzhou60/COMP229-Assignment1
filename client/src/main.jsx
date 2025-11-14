@@ -14,8 +14,7 @@ createRoot(document.getElementById("root")).render(
  * Write a note to look at assingment 2 for the first part of the assignment.
  * 
  * PARTII – Reference Slides – Week8, Week9, Week10 slides.
-a) Create the forms, SignUp, Signin, Education or Qualification, Project using react form ensuring state
-management. (Frontend).
+a) Create the forms, SignUp, Signin, Education or Qualification, Project using react form ensuring state management. (Frontend).
 b) Update the Contact form using react form ensuring state management.
 c) Integrate the Backend APIs to the Frontend (API consumption).
 d) Create and Perform CRUD Operations for the objects Contact, Education or Qualification e.t.c

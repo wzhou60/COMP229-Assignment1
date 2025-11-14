@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-
 import "./contact.css";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
 export default function Contact() {
   return (
     <>
@@ -34,13 +36,65 @@ function ContactForms() {
    * It takes one argument, an object containing the form data.
    * The function logs the form data to the console.
    */
-  const onSubmit = (data) => {
+  /* const onSubmit = (data) => {
     data.preventDefault();
     console.log("Form submitted");
     console.log(data);
       window.location.href = '/'; 
 
-  };
+  }; */
+
+
+  const [loading, setLoading] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+  
+    const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors }
+    } = useForm();
+  
+    const onSubmit = async (data) => {
+      setLoading(true);
+      setSubmitStatus({ type: '', message: '' });
+  
+      try {
+        // Simulate API call or send to your backend
+        console.log("Form submitted:", data);
+        
+        // Example: Send to backend API
+        // const response = await fetch('/api/contact', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(data)
+        // });
+        
+        // if (!response.ok) throw new Error('Failed to send message');
+  
+        setSubmitStatus({ 
+          type: 'success', 
+          message: 'Message sent successfully! Redirecting...' 
+        });
+  
+        // Reset form after successful submission
+        reset();
+  
+        // Redirect after 2 seconds
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 2000);
+  
+      } catch (error) {
+        setSubmitStatus({ 
+          type: 'error', 
+          message: 'Failed to send message. Please try again.' 
+        });
+        console.error('Submission error:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
   return (
     <>
