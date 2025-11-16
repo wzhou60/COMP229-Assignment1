@@ -12,7 +12,7 @@ app.listen(3000);
 console.log("Server running at http://localhost:3000/");
 //module.exports = app;
 export default app;
- */
+*/
 
 import config from "./config/config.js";
 import app from "./server/express.js";

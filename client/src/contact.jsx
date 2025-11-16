@@ -31,7 +31,7 @@ function ContactDetails() {
 }
 
 function ContactForms() {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); //use navigate to get to other pages
 
   // Initialize state for all form fields
   const [formData, setFormData] = useState({
@@ -64,7 +64,7 @@ function ContactForms() {
 
   return (
     <>
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" onSubmit={onSubmit}> 
         <h3>Send Me a Message</h3>
         <div className="field">
           <label>First Name</label>

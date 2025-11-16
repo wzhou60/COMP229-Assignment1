@@ -6,11 +6,15 @@
 Your About Me page should include a link to a PDF version of your Resume. */
 
 import "./about.css";
+import EducationList from "./EducationList.jsx";
+//import ProjectList from "./ProjectList.jsx";
 
 export default function About() {
   return (
     <>
       <Info />
+
+      <EducationList/>
     </>
   );
 }

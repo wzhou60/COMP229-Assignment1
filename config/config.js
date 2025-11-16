@@ -6,9 +6,7 @@ const config = {
     process.env.MONGODB_URI ||
     "mongodb+srv://jzhou39_db_user:KQHb9osqa8IBy5Nl@cluster0.svci2dc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" ||
     process.env.MONGO_HOST ||
-    "mongodb://" +
-      (process.env.IP || "localhost") +
-      ":" +
+    "mongodb://" + (process.env.IP || "localhost") + ":" +
       (process.env.MONGO_PORT || "27017") +
       "/mernproject",
 };
