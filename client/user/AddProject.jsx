@@ -1,140 +1,175 @@
+import {
+  Card,
+  CardContent,
+  Typography,
+  TextField,
+  CardActions,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+//import auth from "../lib/auth-helper.js";
+import { create } from "./api-projects.js";
 
 export default function AddProject() {
-  const navigate = useNavigate();
-
-  // State matches the ProjectSchema
-  const [formData, setFormData] = useState({
+  // Match the ProjectSchema
+  const [values, setValues] = useState({
     title: "",
     firstname: "",
     lastname: "",
     email: "",
     completion: "",
     description: "",
+    error: "",
   });
 
-  const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleChange = (name) => (event) => {
+    setValues({ ...values, [name]: event.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setError(null);
+  const handleClose = () => {
+    setOpen(false);
+    navigate("/about");
+  };
 
-    try {
-      // Update endpoint to '/api/projects'
-      const response = await fetch("/api/projects", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  const clickSubmit = async () => {
+    const project = {
+      title: values.title || undefined,
+      firstname: values.firstname || undefined,
+      lastname: values.lastname || undefined,
+      email: values.email || undefined,
+      completion: values.completion || undefined,
+      description: values.description || undefined,
+    };
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to add project");
+    create(project).then((data) => {
+      if (data.error) {
+        setValues({ ...values, error: data.error });
+      } else {
+        setOpen(true);
       }
-
-      console.log("Project added:", data);
-      navigate("/projects"); // Redirect to projects page
-    } catch (err) {
-      console.error("Submission error:", err.message);
-      setError(err.message);
-    }
+    });
   };
 
   return (
-    <div className="form-container">
-      <form className="form" onSubmit={onSubmit}>
-        <h3>Add New Project</h3>
+    <div>
+      <Card
+        sx={{
+          maxWidth: 600,
+          margin: "0 auto",
+          mt: 3,
+          p: 2,
+          textAlign: "center",
+        }}
+      >
+        <CardContent>
+          <Typography variant="h6" sx={{ fontSize: 18, mb: 2 }}>
+            Add New Project
+          </Typography>
 
-        <div className="field">
-          <label htmlFor="title">Project Title</label>
-          <input
-            type="text"
-            name="title"
+          <TextField
             id="title"
-            value={formData.title}
-            onChange={handleChange}
+            label="Title"
+            placeholder="e.g., Restaurant App"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.title}
+            onChange={handleChange("title")}
+            margin="normal"
             required
-            placeholder="e.g., Portfolio Website"
           />
-        </div>
 
-        <div className="field">
-          <label htmlFor="firstname">First Name</label>
-          <input
-            type="text"
-            name="firstname"
+          <TextField
             id="firstname"
-            value={formData.firstname}
-            onChange={handleChange}
+            label="First Name"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.firstname}
+            onChange={handleChange("firstname")}
+            margin="normal"
             required
           />
-        </div>
 
-        <div className="field">
-          <label htmlFor="lastname">Last Name</label>
-          <input
-            type="text"
-            name="lastname"
+          <TextField
             id="lastname"
-            value={formData.lastname}
-            onChange={handleChange}
+            label="Last Name"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.lastname}
+            onChange={handleChange("lastname")}
+            margin="normal"
             required
           />
-        </div>
 
-        <div className="field">
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            name="email"
+          <TextField
             id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+            label="Email Address"
+            type="email"
             placeholder="email@example.com"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.email}
+            onChange={handleChange("email")}
+            margin="normal"
+            required
           />
-        </div>
 
-        <div className="field">
-          <label htmlFor="completion">Completion Date</label>
-          <input
-            type="date"
-            name="completion"
+          <TextField
             id="completion"
-            value={formData.completion}
-            onChange={handleChange}
+            label="Completion Date"
+            type="date"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.completion}
+            onChange={handleChange("completion")}
+            margin="normal"
+            InputLabelProps={{ shrink: true }}
           />
-        </div>
 
-        <div className="field">
-          <label htmlFor="description">Description</label>
-          <textarea
-            name="description"
+          <TextField
             id="description"
-            value={formData.description}
-            onChange={handleChange}
-            rows="4"
+            label="Description"
             placeholder="Optional: A brief description"
+            sx={{ width: "100%", mb: 2 }}
+            value={values.description}
+            onChange={handleChange("description")}
+            margin="normal"
+            multiline
+            rows={4}
           />
-        </div>
 
-        {error && <p className="error-message">{error}</p>}
+          {values.error && (
+            <Typography color="error" sx={{ mt: 1 }}>
+              {values.error}
+            </Typography>
+          )}
+        </CardContent>
+        <CardActions>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={clickSubmit}
+            sx={{ margin: "0 auto", mb: 2 }}
+          >
+            Add Project
+          </Button>
+        </CardActions>
+      </Card>
 
-        <button type="submit">Add Project</button>
-      </form>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>Project Added</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Project record successfully created.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button color="primary" autoFocus variant="contained" onClick={handleClose}>
+            View Project List
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }

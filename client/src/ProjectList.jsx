@@ -71,9 +71,9 @@ export default function ProjectList() {
         {isAdmin && (
           <IconButton
             color="primary"
-            aria-label="add qualification"
+            aria-label="add project"
             component={Link}
-            to="/qualifications/add"
+            to="/add/projects/"
             sx={{
               position: "absolute",
               right: 0,
@@ -100,7 +100,7 @@ export default function ProjectList() {
                       edge="end"
                       aria-label="edit"
                       component={Link}
-                      to={`/qualifications/${item._id}`}
+                      to={`/projects/${item._id}`}
                     >
                       <EditIcon />
                     </IconButton>

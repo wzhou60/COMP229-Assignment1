@@ -75,7 +75,7 @@ export default function EditEducation() {
   };
 
   if (values.NavigateToEducation) {
-    return <Navigate to={`/qualifications/${values.userId}`} />; // Navigate to list or details page
+    return <Navigate to={`/about/`} />; // Navigate to list page
   }
 
   return (

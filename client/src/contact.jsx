@@ -2,8 +2,7 @@ import { useNavigate } from "react-router-dom";
 import "./contact.css";
 import React, { useState } from "react";
 import { create } from "../user/api-contacts.js";
-import ContactList from "./ContactList.jsx"
-//import { useForm } from "react-hook-form";
+import ContactList from "./ContactList.jsx";
 
 export default function Contact() {
   return (
@@ -11,8 +10,7 @@ export default function Contact() {
       <h2 className="contact-header">Contact Me</h2>
       <ContactDetails />
       <ContactForms />
-            <ContactList />
-
+      <ContactList />
     </>
   );
 }
@@ -25,7 +23,7 @@ function ContactDetails() {
         <strong>Email:</strong> <a href="mailto:jzhou39@gmail.com">jzhou39@gmail.com</a>
       </p>
       <p>
-        <strong>Phone:</strong> <a href="tel:+16476146663">+1 (647) 614-6663</a>
+        <strong>Phone:</strong> <a href="tel:+16476146663">+1 (647) 137-4203</a>
       </p>
       <p>
         <strong>Location:</strong> Toronto, Ontario, Canada
@@ -76,13 +74,14 @@ function ContactForms() {
     console.log("Message:", formData);
 
     // Navigate to home page without full page reload
-    navigate("/");
+    //navigate("/");
+    navigate("/", { state: { message: "Your message has been sent!" } });
   };
 
   return (
     <>
       <form className="form" onSubmit={onSubmit}>
-        <h3>Send Me a Message</h3>
+        <h3>Become a Contact</h3>
         <div className="field">
           <label>First Name</label>
           <input

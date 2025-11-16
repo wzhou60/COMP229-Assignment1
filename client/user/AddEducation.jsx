@@ -13,10 +13,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import auth from "../lib/auth-helper.js";
+//import auth from "../lib/auth-helper.js";
 import { create } from "./api-edu.js";
 
 export default function AddEducation() {
+  //match the education schema
   const [values, setValues] = useState({
     title: "",
     firstname: "",
@@ -48,28 +49,6 @@ export default function AddEducation() {
       completion: values.completion || undefined,
       description: values.description || undefined,
     };
-
-    /* try {
-      const jwt = auth.isAuthenticated();
-      const response = await fetch("/api/educations", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${jwt.token}`,
-        },
-        body: JSON.stringify(education),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setValues({ ...values, error: data.error || "Failed to create education" });
-      } else {
-        setOpen(true);
-      }
-    } catch (err) {
-      setValues({ ...values, error: "Error creating education record" });
-    } */
 
     create(education).then((data) => {
       if (data.error) {

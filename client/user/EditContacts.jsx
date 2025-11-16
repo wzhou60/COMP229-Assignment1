@@ -12,7 +12,7 @@ export default function EditContacts() {
     email: "",
     open: false,
     error: "",
-    NavigateToProfile: false,
+    NavigateToContact: false,
   });
 
   const jwt = auth.isAuthenticated();
@@ -51,7 +51,7 @@ export default function EditContacts() {
         setValues((prev) => ({
           ...prev,
           userId: data._id,
-          NavigateToProfile: true,
+          NavigateToContact: true,
         }));
       }
     });
@@ -61,8 +61,8 @@ export default function EditContacts() {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  if (values.NavigateToProfile) {
-    return <Navigate to={`/contacts/${values.userId}`} />;
+  if (values.NavigateToContact) {
+    return <Navigate to={`/contact`} />;
   }
 
   return (

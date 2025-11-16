@@ -74,8 +74,8 @@ export default function EditProjects() {
     setValues({ ...values, [name]: event.target.value });
   };
 
-  if (values.NavigateToProfile) {
-    return <Navigate to={`/projects/${values.userId}`} />;
+  if (values.NavigateToProject) {
+    return <Navigate to={`/about`} />;
   }
 
   return (
@@ -90,7 +90,7 @@ export default function EditProjects() {
     >
       <CardContent>
         <Typography variant="h6" sx={{ mt: 2, mb: 2, color: "text.primary" }}>
-          Edit Profile
+          Edit Project
         </Typography>
         <TextField
           id="title"
