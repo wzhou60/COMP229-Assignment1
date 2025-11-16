@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // For edit button
-import auth from "../lib/auth-helper.js"; // For checking roles
+//import auth from "../lib/auth-helper.js"; // For checking roles
 
 import { authCheck } from "../user/api-user.js";
 import { list, remove } from "../user/api-edu.js";
@@ -13,8 +13,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import IconButton from "@mui/material/IconButton";
-import CircularProgress from "@mui/material/CircularProgress";
-import Alert from "@mui/material/Alert";
+//import CircularProgress from "@mui/material/CircularProgress";
+//import Alert from "@mui/material/Alert";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
@@ -52,7 +52,8 @@ export default function EducationList() {
       await remove({ educationId: id }, { t: jwt.token });
       setEducationItems((prev) => prev.filter((item) => item._id !== id));
     } catch (err) {
-      setError(err.message);
+      //setError(err.message);
+      console.log(err.message);
     }
   };
 
@@ -68,10 +69,10 @@ export default function EducationList() {
         {error}
       </Alert>
     ); */
-  console.log("Edu itms :", educationItems);
+  //console.log("Edu itms :", educationItems);
   return (
     <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
-      <Typography variant="h5" component="h2" gutterBottom>
+      <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
         Education & Qualifications
       </Typography>
 
@@ -114,6 +115,7 @@ export default function EducationList() {
                       {item.firstname} {item.lastname}
                     </Typography>
                     {` — ${item.description || "No description"}`}
+                    {` — Completed:  ${item.completion.split("T")[0] || "No completion date"}`}
                   </>
                 }
               />

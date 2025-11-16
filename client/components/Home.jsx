@@ -6,8 +6,16 @@
 //allows the user to redirect your About Me Page and / or other pages. I recommend also
 // including some sort of Mission Statement.
 
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import HomeIcon from "@mui/icons-material/Home";
+import Button from "@mui/material/Button";
+
 import { Link } from "react-router-dom"; //use link for the button to go to other pages
 import "./home.css";
+import Signup from "../user/Signup.jsx";
+import Users from "../user/Users.jsx";
 
 export default function Home() {
   return <Welcome />;
@@ -31,6 +39,9 @@ function Welcome() {
         </div>
       </div>
       <Buttons />
+      <div style={{ marginBottom: "40px" }}>
+        <Users />
+      </div>
     </>
   );
 }

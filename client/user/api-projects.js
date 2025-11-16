@@ -1,4 +1,4 @@
-const API_BASE = "/api/qualifications";
+const API_BASE = "/api/projects";
 
 /*
 Handles response from the server and parses it as a JSON

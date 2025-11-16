@@ -1,3 +1,6 @@
+/*
+APi call for sign in and sign out
+*/
 const signin = async (user) => {
   try {
     let response = await fetch("/auth/signin/", {

@@ -71,7 +71,3 @@ nav a::after {
   background: #add8e6;
   transition: width 0.25s ease;
 }
-
-nav a:hover::after {
-  width: 100%;
-}

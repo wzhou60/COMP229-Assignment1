@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
   salt: String,
   role: {
     type: String,
-    default: "user",
+    default: "User",
   }
 });
 

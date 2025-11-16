@@ -1,4 +1,4 @@
-const API_BASE = "/api/qualifications";
+const API_BASE = "/api/contacts";
 
 /*
 Handles response from the server and parses it as a JSON
@@ -72,7 +72,7 @@ const read = async ({ userId }, { t }, signal) => {
   }
 };
 
-//updat function 
+//updat function
 const update = async ({ userId }, { t }, user) => {
   try {
     const response = await fetch(`${API_BASE}/${userId}`, {
@@ -111,7 +111,7 @@ const remove = async ({ userId }, { t }) => {
 const authCheck = {
   authenticate(jwt, cb) {
     if (typeof window !== "undefined") {
-      localStorage.setItem('jwt', JSON.stringify(jwt));
+      localStorage.setItem("jwt", JSON.stringify(jwt));
     }
     cb();
   },
@@ -120,8 +120,8 @@ const authCheck = {
     if (typeof window == "undefined") {
       return false;
     }
-    if (localStorage.getItem('jwt')) {
-      return JSON.parse(localStorage.getItem('jwt'));
+    if (localStorage.getItem("jwt")) {
+      return JSON.parse(localStorage.getItem("jwt"));
     } else {
       return false;
     }
@@ -129,10 +129,10 @@ const authCheck = {
 
   clearJWT(cb) {
     if (typeof window !== "undefined") {
-      localStorage.removeItem('jwt');
+      localStorage.removeItem("jwt");
     }
     cb();
-  }
+  },
 };
 
 export { create, list, read, update, remove, authCheck };
