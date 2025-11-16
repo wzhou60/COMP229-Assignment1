@@ -1,10 +1,3 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom"; // For edit button
-//import auth from "../lib/auth-helper.js"; // For checking roles
-
-import { authCheck } from "../user/api-user.js";
-import { list, remove } from "../user/api-edu.js";
-
 // Import MUI components
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -18,12 +11,17 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // For edit button
+import auth from "../lib/auth-helper.js"; // For checking roles
+import { list, remove } from "../user/api-edu.js";
+
 export default function EducationList() {
   const [educationItems, setEducationItems] = useState([]);
   //const [loading, setLoading] = useState(true);
   //const [error, setError] = useState(null);
 
-  const isAuthenticated = authCheck.isAuthenticated();
+  const isAuthenticated = auth.isAuthenticated();
   const isAdmin = isAuthenticated && isAuthenticated.user.role === "Admin";
 
   useEffect(() => {
@@ -41,35 +39,20 @@ export default function EducationList() {
     return () => abortController.abort();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, jwt) => {
+    console.log(id);
     if (!window.confirm("Are you sure?")) return;
 
-    // Use authCheck
-    const jwt = authCheck.isAuthenticated();
-    if (!jwt) return;
-
-    try {
-      await remove({ educationId: id }, { t: jwt.token });
-      setEducationItems((prev) => prev.filter((item) => item._id !== id));
-    } catch (err) {
-      //setError(err.message);
-      console.log(err.message);
-    }
+    remove({ userId: id }, { t: jwt.token }).then((data) => {
+      if (data?.error) {
+        console.error(data.error);
+      } else {
+        console.log("deleted");
+        setEducationItems((prev) => prev.filter((item) => item._id !== id)); //refreshes list after delete with out the deleted item based on id
+      }
+    });
   };
 
-  /*   if (loading)
-    return (
-      <Box sx={{ display: "flex", justifyContent: "center", my: 4 }}>
-        <CircularProgress />
-      </Box>
-    );
-  if (error)
-    return (
-      <Alert severity="error" sx={{ my: 2 }}>
-        {error}
-      </Alert>
-    ); */
-  //console.log("Edu itms :", educationItems);
   return (
     <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
       <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
@@ -98,7 +81,7 @@ export default function EducationList() {
                     <IconButton
                       edge="end"
                       aria-label="delete"
-                      onClick={() => handleDelete(item._id)}
+                      onClick={() => handleDelete(item._id, isAuthenticated)}
                       sx={{ ml: 1 }}
                     >
                       <DeleteIcon />

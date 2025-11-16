@@ -19,9 +19,7 @@ const create = async (req, res) => {
 
 const list = async (req, res) => {
   try {
-    let contacts = await Contact.find().select(
-      "title firstname lastname email completion description"
-    );
+    let contacts = await Contact.find().select("firstname lastname email");
     res.json(contacts);
   } catch (err) {
     return res.status(400).json({

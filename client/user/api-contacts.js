@@ -107,8 +107,9 @@ const remove = async ({ userId }, { t }) => {
   }
 };
 
-//chcks if the user is authenticated
 
+
+//chcks if the user is authenticated
 /* const authCheck = {
   authenticate(jwt, cb) {
     if (typeof window !== "undefined") {

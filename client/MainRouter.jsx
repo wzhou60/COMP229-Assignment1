@@ -11,6 +11,9 @@ import Signin from "./lib/Signin.jsx";
 import Profile from "./user/Profile.jsx";
 import PrivateRoute from "./lib/PrivateRoute.jsx";
 import EditProfile from "./user/EditProfile.jsx";
+import EditContacts from "./user/EditContacts.jsx";
+import EditEducation from "./user/EditEducation.jsx";
+import EditProjects from "./user/EditProjects.jsx";
 
 const MainRouter = () => {
   return (
@@ -35,6 +38,38 @@ const MainRouter = () => {
           }
         />
         <Route path="/user/:userId" element={<Profile />} />
+
+        <Route
+          path="/contacts/:userId"
+          element={
+            <PrivateRoute>
+              <EditContacts />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/qualifications/:userId"
+          element={
+            <PrivateRoute>
+              <EditEducation />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/projects/:userId"
+          element={
+            <PrivateRoute>
+              <EditProjects />
+            </PrivateRoute>
+          }
+        />
+
+
+
+
+        {""}
       </Routes>
     </div>
   );

@@ -43,19 +43,18 @@ export default function ContactList() {
     return () => abortController.abort();
   }, []);
 
-  const handleDelete = async (id) => {
+  const handleDelete = async (id, jwt) => {
+    console.log(id);
     if (!window.confirm("Are you sure?")) return;
 
-    // Use authCheck
-    const jwt = auth.isAuthenticated();
-    if (!jwt) return;
-
-    try {
-      await remove({ educationId: id }, { t: jwt.token });
-      setContactItems((prev) => prev.filter((item) => item._id !== id));
-    } catch (err) {
-      console.log(err.message);
-    }
+    remove({ userId: id }, { t: jwt.token }).then((data) => {
+      if (data?.error) {
+        console.error(data.error);
+      } else {
+        console.log("deleted");
+        setContactItems((prev) => prev.filter((item) => item._id !== id)); //refreshes list after delete with out the deleted item based on id
+      }
+    });
   };
 
   return (
@@ -86,7 +85,7 @@ export default function ContactList() {
                     <IconButton
                       edge="end"
                       aria-label="delete"
-                      onClick={() => handleDelete(item._id)}
+                      onClick={() => handleDelete(item._id, isAuthenticated)}
                       sx={{ ml: 1 }}
                     >
                       <DeleteIcon />
