@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  TextField,
-  Typography,
-  Icon,
-} from "@mui/material";
+import { Card, CardActions, CardContent, Button, TextField, Typography, Icon } from "@mui/material";
 import auth from "../lib/auth-helper.js";
 import { read, update } from "./api-user.js";
 import { Navigate, useParams } from "react-router-dom";
@@ -126,12 +118,7 @@ export default function EditProfile() {
       </CardContent>
 
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={clickSubmit}
-          sx={{ mb: 2 }}
-        >
+        <Button color="primary" variant="contained" onClick={clickSubmit} sx={{ mb: 2 }}>
           Submit
         </Button>
       </CardActions>

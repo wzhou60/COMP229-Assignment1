@@ -8,7 +8,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import Button from "@mui/material/Button";
 
 import { Link, useNavigate, useLocation } from "react-router-dom"; //use link for the button to go to other pages
-import Signup from "../user/Signup.jsx";
 import auth from "../lib/auth-helper";
 
 const isActive = (location, path) => (location.pathname === path ? "#ff4081" : "#374151");
@@ -22,7 +21,7 @@ export default function Layout() {
         <div className="brand">
           <img src="/assets/logo.png" alt="Logo" />
           <h1>My Portfolio</h1>
-          
+
           {!auth.isAuthenticated() && (
             <>
               <Link to="/signup">
@@ -65,29 +64,46 @@ export default function Layout() {
           )}
 
           {auth.isAuthenticated() && (
-          <>
-            <Link to={`/user/${auth.isAuthenticated().user._id}`}>
+            <>
+              <Link to={`/user/${auth.isAuthenticated().user._id}`}>
+                <Button
+                  variant="text"
+                  sx={{
+                    color: isActive(location, `/user/${auth.isAuthenticated().user._id}`),
+                    fontWeight: 500,
+                    fontSize: "1.5rem",
+                    fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;",
+                    textTransform: "none",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#add8e6",
+                    },
+                  }}
+                >
+                  My Profile
+                </Button>
+              </Link>
               <Button
+                variant="text"
                 sx={{
-                  color: isActive(
-                    location,
-                    `/user/${auth.isAuthenticated().user._id}`
-                  ),
+                  color: "#374151",
+                  fontWeight: 500,
+                  fontSize: "1.5rem",
+                  fontFamily: "Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;",
+                  textTransform: "none",
+                  "&:hover": {
+                    backgroundColor: "transparent",
+                    color: "#add8e6",
+                  },
+                }}
+                onClick={() => {
+                  auth.clearJWT(() => navigate("/"));
                 }}
               >
-                My Profile
+                Sign out
               </Button>
-            </Link>
-            <Button
-              sx={{ color: "#ffffff" }}
-              onClick={() => {
-                auth.clearJWT(() => navigate("/"));
-              }}
-            >
-              Sign out
-            </Button>
-          </>
-        )}
+            </>
+          )}
         </div>
         <nav>
           <Link to="/">Home</Link>

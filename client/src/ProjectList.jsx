@@ -21,7 +21,7 @@ export default function ProjectList() {
   const [projectItems, setProjectItems] = useState([]);
 
   const isAuthenticated = authCheck.isAuthenticated();
-  const isAdmin = isAuthenticated && isAuthenticated.user.role === "admin";
+  const isAdmin = isAuthenticated && isAuthenticated.user.role === "Admin";
 
   useEffect(() => {
     const abortController = new AbortController();

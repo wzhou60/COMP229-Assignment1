@@ -14,9 +14,8 @@ export default function About() {
     <>
       <Info />
 
-      <EducationList/>
-            <ProjectList/>
-
+      <EducationList />
+      <ProjectList />
     </>
   );
 }

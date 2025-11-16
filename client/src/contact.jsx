@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./contact.css";
 import React, { useState } from "react";
+import { create } from "../user/api-contacts.js";
+import ContactList from "./ContactList.jsx"
 //import { useForm } from "react-hook-form";
 
 export default function Contact() {
@@ -9,6 +11,8 @@ export default function Contact() {
       <h2 className="contact-header">Contact Me</h2>
       <ContactDetails />
       <ContactForms />
+            <ContactList />
+
     </>
   );
 }
@@ -54,45 +58,95 @@ function ContactForms() {
   const onSubmit = (e) => {
     e.preventDefault(); // Prevent the browser reload
 
+    const contact = {
+      firstname: formData.firstName || undefined,
+      lastname: formData.lastName || undefined,
+      email: formData.email || undefined,
+    };
+
+    create(contact).then((data) => {
+      if (data.error) {
+        setFormData({ ...formData, error: data.error });
+      } else {
+        //setOpen(true);
+      }
+    });
+
     console.log("Form submitted successfully");
     console.log("Message:", formData);
 
     // Navigate to home page without full page reload
-    navigate('/');
-
+    navigate("/");
   };
 
   return (
     <>
-      <form className="form" onSubmit={onSubmit}> 
+      <form className="form" onSubmit={onSubmit}>
         <h3>Send Me a Message</h3>
         <div className="field">
           <label>First Name</label>
-          <input type="text" name="firstName" id="firstName" required placeholder="Joe" value={formData.firstName} onChange={handleChange} />
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            required
+            placeholder="Joe"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="field">
           <label>Last Name</label>
-          <input type="text" name="lastName" id="lastName" required placeholder="Bama" value={formData.lastName} onChange={handleChange} />
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            required
+            placeholder="Bama"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="field">
           <label>Contact Number</label>
-          <input type="tel" name="contactNumber" id="contactNumber" placeholder="+1 416 123 6789" value={formData.contactNumber} onChange={handleChange} />
+          <input
+            type="tel"
+            name="contactNumber"
+            id="contactNumber"
+            placeholder="+1 416 123 6789"
+            value={formData.contactNumber}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="field">
           <label htmlFor="email">Email Address</label>
-          <input type="email" name="email" id="email" required placeholder="email@example.com" value={formData.email} onChange={handleChange} />
+          <input
+            type="email"
+            name="email"
+            id="email"
+            required
+            placeholder="email@example.com"
+            value={formData.email}
+            onChange={handleChange}
+          />
         </div>
 
         <div className="field">
           <label htmlFor="message">Message</label>
-          <textarea rows="5" name="message" id="message" placeholder="What would you like to talk about?" value={formData.message} onChange={handleChange} />
+          <textarea
+            rows="5"
+            name="message"
+            id="message"
+            placeholder="What would you like to talk about?"
+            value={formData.message}
+            onChange={handleChange}
+          />
         </div>
 
-          <button type="submit">Send Message</button>
-        
+        <button type="submit">Send Message</button>
       </form>
     </>
   );

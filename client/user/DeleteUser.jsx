@@ -43,11 +43,7 @@ export default function DeleteUser({ userId }) {
 
   return (
     <>
-      <IconButton
-        aria-label="Delete account"
-        onClick={clickButton}
-        color="error"
-      >
+      <IconButton aria-label="Delete account" onClick={clickButton} color="error">
         <DeleteIcon />
       </IconButton>
 
@@ -55,20 +51,14 @@ export default function DeleteUser({ userId }) {
         <DialogTitle>Delete Account</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Are you sure you want to delete your account? This action is
-            irreversible.
+            Are you sure you want to delete your account? This action is irreversible.
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleRequestClose} color="primary">
             Cancel
           </Button>
-          <Button
-            onClick={deleteAccount}
-            color="error"
-            variant="contained"
-            autoFocus
-          >
+          <Button onClick={deleteAccount} color="error" variant="contained" autoFocus>
             Confirm
           </Button>
         </DialogActions>

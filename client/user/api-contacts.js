@@ -108,7 +108,8 @@ const remove = async ({ userId }, { t }) => {
 };
 
 //chcks if the user is authenticated
-const authCheck = {
+
+/* const authCheck = {
   authenticate(jwt, cb) {
     if (typeof window !== "undefined") {
       localStorage.setItem("jwt", JSON.stringify(jwt));
@@ -133,6 +134,6 @@ const authCheck = {
     }
     cb();
   },
-};
+}; */
 
-export { create, list, read, update, remove, authCheck };
+export { create, list, read, update, remove };

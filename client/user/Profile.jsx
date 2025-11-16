@@ -77,7 +77,10 @@ export default function Profile() {
           )}
         </ListItem>
         <Divider />
-        <ListItem>
+        <ListItem sx={{ mt: 1 }}>
+          <ListItemText primary={user.created ? `Role: ${user.role}` : "Loading..."} />
+        </ListItem>
+        <ListItem sx={{ mb: -1, mt: -1 }}>
           <ListItemText
             primary={
               user.created ? `Joined: ${new Date(user.created).toDateString()}` : "Loading..."

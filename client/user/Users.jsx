@@ -66,8 +66,10 @@ export default function Users() {
                 secondary={
                   <>
                     <Typography component="span" variant="body4" color="text.primary">
-                      {item.email} {item.role}
+                      {item.email}
                     </Typography>
+                    <br></br>
+                    {`Role: ${item.role}`}
                   </>
                 }
               />
