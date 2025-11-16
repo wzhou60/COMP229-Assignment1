@@ -1,15 +1,20 @@
-// Import MUI components
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import IconButton from "@mui/material/IconButton";
-//import CircularProgress from "@mui/material/CircularProgress";
-//import Alert from "@mui/material/Alert";
+import {
+  Box,
+  Paper,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemSecondaryAction,
+  ListItemText,
+  Avatar,
+  IconButton,
+  Typography,
+  Divider,
+} from "@mui/material";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // For edit button
@@ -55,10 +60,33 @@ export default function EducationList() {
 
   return (
     <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
-      <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
-        Education & Qualifications
-      </Typography>
-
+      <Box
+        sx={{
+          mb: 2,
+          position: "relative", // Enables absolute positioning for the icon
+          textAlign: "center",
+        }}
+      >
+        <Typography variant="h5" component="h2" fontWeight="bold" gutterBottom>
+          Education & Qualifications
+        </Typography>
+        {isAdmin && (
+          <IconButton
+            color="primary"
+            aria-label="add qualification"
+            component={Link}
+            to="/qualifications/add"
+             sx={{
+              position: "absolute",
+              right: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+            }}
+          >
+            <AddIcon />
+          </IconButton>
+        )}
+      </Box>
       {educationItems.length === 0 ? (
         <Typography variant="body2">No education items found.</Typography>
       ) : (
