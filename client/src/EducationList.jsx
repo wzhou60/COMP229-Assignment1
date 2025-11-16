@@ -75,7 +75,7 @@ export default function EducationList() {
             color="primary"
             aria-label="add qualification"
             component={Link}
-            to="/qualifications/add"
+            to="/add/qualifications"
              sx={{
               position: "absolute",
               right: 0,

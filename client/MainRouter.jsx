@@ -14,6 +14,8 @@ import EditProfile from "./user/EditProfile.jsx";
 import EditContacts from "./user/EditContacts.jsx";
 import EditEducation from "./user/EditEducation.jsx";
 import EditProjects from "./user/EditProjects.jsx";
+import AddProjects from "./user/AddProject.jsx";
+import AddEducation from "./user/AddEducation.jsx";
 
 const MainRouter = () => {
   return (
@@ -58,6 +60,15 @@ const MainRouter = () => {
         />
 
         <Route
+          path="/add/qualifications/"
+          element={
+            <PrivateRoute>
+              <AddEducation />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
           path="/projects/:userId"
           element={
             <PrivateRoute>
@@ -66,8 +77,14 @@ const MainRouter = () => {
           }
         />
 
-
-
+        <Route
+          path="/add/projects/"
+          element={
+            <PrivateRoute>
+              <AddProjects />
+            </PrivateRoute>
+          }
+        />
 
         {""}
       </Routes>
