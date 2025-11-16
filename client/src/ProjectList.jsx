@@ -57,7 +57,7 @@ export default function ProjectList() {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 3, mt: 4 }}>
+    <Paper elevation={3} sx={{ p: 3, mt: 4, mb: 5 }}>
       <Box
         sx={{
           mb: 2,

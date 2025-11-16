@@ -13,6 +13,7 @@ import { signin } from "./api-auth.js";
 export default function Signin() {
   const location = useLocation();
 
+  // State to hold the form values, error messages, and redirection flag.
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -20,15 +21,19 @@ export default function Signin() {
     redirectToReferrer: false,
   });
 
+  // Handle form submission.
   const clickSubmit = () => {
     const user = {
       email: values.email || undefined,
       password: values.password || undefined,
     };
+    // Calls the signin API with the user credentials.
     signin(user).then((data) => {
       if (data.error) {
+        // If there's an error, update the state to display the error message.
         setValues({ ...values, error: data.error });
       } else {
+        // If sign-in is successful, authenticate the user and set the redirection flag.
         auth.authenticate(data, () => {
           setValues({ ...values, error: "", redirectToReferrer: true });
         });
@@ -36,14 +41,18 @@ export default function Signin() {
     });
   };
 
+  // Handles changes in the input fields and updates the state.
   const handleChange = (name) => (event) => {
     setValues({ ...values, [name]: event.target.value });
   };
 
+  // Determines the page to redirect to after a successful sign-in.
+  // It defaults to the home page if no previous location is found.
   const { from } = location.state || {
     from: { pathname: "/" },
   };
 
+  // If redirectToReferrer is true, navigate to the 'from' const declare earlier.
   const { redirectToReferrer } = values;
   if (redirectToReferrer) {
     return <Navigate to={from} />;

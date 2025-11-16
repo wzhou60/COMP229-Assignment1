@@ -77,7 +77,7 @@ export default function EditContacts() {
     >
       <CardContent>
         <Typography variant="h6" sx={{ mt: 2, mb: 2, color: "text.primary" }}>
-          Edit Profile
+          Edit Contact
         </Typography>
 
         <TextField
